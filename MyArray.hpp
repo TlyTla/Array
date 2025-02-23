@@ -6,6 +6,8 @@
 #include<initializer_list>
 #include<algorithm>
 #include<span>
+#include<utility>
+#include<sstream>
 
 
 class MyArray final
@@ -39,7 +41,7 @@ private:
 	friend void swap(MyArray& fristObj, MyArray& secondObj) noexcept;
 };
 
-std::ostream& operator<<(std::ostream out, const MyArray& obj);
+//std::ostream& operator<<(std::ostream out, const MyArray& obj);
 
 
 #endif  // !_MYARRAY_HPP_
