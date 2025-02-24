@@ -80,7 +80,63 @@ bool MyArray::operator==(const MyArray& rightArray) const noexcept
 	return std::equal(std::begin(leftArr), std::end(leftArr), std::begin(rightArr), std::end(rightArr));
 }
 
+int& MyArray::operator[](size_t index)
+{
+	if (index >= this->arrSize)
+	{
+		throw std::out_of_range("ERROR");
+	}
+	return this->ptr[index];
+}
+
+const int& MyArray::operator[](size_t index) const
+{
+	if (index >= this->arrSize)
+	{
+		throw std::out_of_range("ERROR");
+	}
+	return this->ptr[index];
+}
+
 MyArray::operator bool() const noexcept
 {
 	return size() != 0;
+}
+
+MyArray& MyArray::operator++()
+{
+	const std::span<int> items{this->ptr.get(), this->arrSize};
+	std::for_each(items.begin(), items.end(), [](auto& i) {++i;});
+
+	return *this;
+}
+
+MyArray MyArray::operator++(int)
+{
+	MyArray temp(*this);
+	++(*this);
+	return temp;
+}
+
+MyArray& MyArray::operator+=(int value)
+{
+	const std::span<int> items{ this->ptr.get(), this->arrSize };
+	std::for_each(items.begin(), items.end(), [value](auto& i) {i += value; });
+	return *this;
+}
+
+std::istream& operator>>(std::istream& in, MyArray& obj)
+{
+	std::span<int> items(obj.ptr.get(), obj.arrSize);
+	for (auto& i : items)
+	{
+		in >> i;
+	}
+	return in;
+}
+
+std::ostream& operator<<(std::ostream out, const MyArray& obj)
+{
+	out << obj.toString();
+	return out;
 }

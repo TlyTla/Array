@@ -16,9 +16,9 @@ public:
 	explicit MyArray(size_t size);
 	explicit MyArray(std::initializer_list<int> list);
 	MyArray(const MyArray& originalArray);
-	MyArray operator=(const MyArray& rightArray);
+	MyArray& operator=(const MyArray& rightArray);
 	MyArray(MyArray&& original) noexcept;
-	MyArray operator=(const MyArray& rightArray) noexcept;
+	MyArray& operator=(MyArray&& rightArray) noexcept;
 	~MyArray();
 
 	size_t size() const noexcept;
@@ -30,7 +30,7 @@ public:
 	explicit operator bool() const noexcept;
 
 	MyArray& operator++();
-	MyArray& operator++(int);
+	MyArray operator++(int);
 	MyArray& operator+=(int value);
 
 private:
@@ -41,7 +41,7 @@ private:
 	friend void swap(MyArray& fristObj, MyArray& secondObj) noexcept;
 };
 
-//std::ostream& operator<<(std::ostream out, const MyArray& obj);
+std::ostream& operator<<(std::ostream out, const MyArray& obj);
 
 
 #endif  // !_MYARRAY_HPP_
