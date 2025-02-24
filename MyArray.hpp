@@ -41,7 +41,7 @@ private:
 	friend void swap(MyArray& fristObj, MyArray& secondObj) noexcept;
 };
 
-std::ostream& operator<<(std::ostream out, const MyArray& obj);
+std::ostream& operator<<(std::ostream& out, const MyArray& obj);
 
 
 #endif  // !_MYARRAY_HPP_
