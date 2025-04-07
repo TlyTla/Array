@@ -1,7 +1,9 @@
 #include"MyArray.hpp"
 
 
+
 #include <deque>
+#include<array>
 
 
 template<typename T>
@@ -14,10 +16,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	Stack<double> a;
-	Stack<int> b;
-
-	a.
+	
 
 	/*
 	MyArray a(5);
@@ -37,6 +36,8 @@ int main()
 	std::cout << z << "\n";
 	std::cout << z[2] << "\n";
 	*/
+
+	myArray one{ 1,2,3 };
 
 	return 0;
 }
