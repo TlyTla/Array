@@ -1,10 +1,25 @@
 #include"MyArray.hpp"
 
+
+#include <deque>
+
+
+template<typename T>
+class Stack;
+
+
+
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+	Stack<double> a;
+	Stack<int> b;
+
+	a.
+
+	/*
 	MyArray a(5);
 	std::cin >> a;
 	std::cout << a << "\n";
@@ -21,6 +36,51 @@ int main()
 	MyArray z(b);
 	std::cout << z << "\n";
 	std::cout << z[2] << "\n";
+	*/
 
 	return 0;
 }
+
+
+template<typename T>
+class Stack
+{
+public:
+	void Pop()
+	{
+		if (!data.empty())
+		{
+			data.pop_back();
+		}
+		else
+		{
+			throw std::_Xout_of_range("Empty");
+		}
+	}
+	void Push(const T& value)
+	{
+		data.push_back(value);
+	}
+	size_t Size()
+	{
+		data.size();
+	}
+	bool Empty() const
+	{
+		return data.empty();
+	}
+	const T& Top() const
+	{
+		if (!data.empty())
+		{
+			data.pop_back();
+		}
+		else
+		{
+			throw std::_Xout_of_range("Empty");
+		}
+	}
+
+private:
+	std::deque<T> data;
+};

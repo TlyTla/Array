@@ -8,6 +8,92 @@
 #include<span>
 #include<utility>
 #include<sstream>
+#include<iterator>
+
+
+template<typename T>
+class ConstIterator
+{
+public:
+	using iterator_category = std::bidirectional_iterator_tag;
+	using difference_type = std::ptrdiff_t;
+	using value_type = T;
+	using pointer = const value_type*;
+	using reference = const value_type&;
+
+	ConstIterator() = default;
+	ConstIterator(pointer ptr) : ptr(ptr) {}
+
+
+	ConstIterator& operator++() noexcept
+	{
+		++ptr;
+		return *this;
+	}
+	ConstIterator& operator++(int) noexcept
+	{
+		ConstIterator temp(*this);
+		++(*this);
+		return temp;
+	}
+	ConstIterator& operator--() noexcept
+	{
+		--ptr;
+		return *this;
+	}
+	ConstIterator& operator--(int) noexcept
+	{
+		ConstIterator temp(*this);
+		--(*this);
+		return temp;
+	}
+	reference operator*()const noexcept { return *ptr; }
+	pointer operator->()const noexcept { return ptr; }
+	
+
+
+private:
+	pointer ptr = nullptr;
+};
+
+template<typename T>
+class Iterator
+{
+public:
+	using iterator_category = std::bidirectional_iterator_tag;
+	using difference_type = std::ptrdiff_t;
+	using value_type = T;
+	using pointer = const value_type*;
+	using reference = const value_type&;
+
+	using ConstIterator<T>::ConstIterator;
+
+	ConstIterator& operator++() noexcept
+	{
+		++ptr;
+		return *this;
+	}
+	ConstIterator& operator++(int) noexcept
+	{
+		ConstIterator temp(*this);
+		++(*this);
+		return temp;
+	}
+	ConstIterator& operator--() noexcept
+	{
+		--ptr;
+		return *this;
+	}
+	ConstIterator& operator--(int) noexcept
+	{
+		ConstIterator temp(*this);
+		--(*this);
+		return temp;
+	}
+	reference operator*()const noexcept { return *ptr; }
+	pointer operator->()const noexcept { return ptr; }
+};
+
 
 
 class MyArray final
